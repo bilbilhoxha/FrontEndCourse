@@ -1,0 +1,9 @@
+<link rel= lidh dokumentin e htm me seddare te jashtem psh css
+href= eshte nje atribut ne html qe tregon ku te con nje link <a> achore 
+ margin: 0; nuk ka hapsire 
+  padding: 0.8rem 0; per te shtuar hapsir vertikale brenda nje elemnti 
+  position: relative; qendron ne pozicionin e tij normal por mund te levizet duke perdorur ,top,right,bottom,left
+  border-radius: 8px; butoni ne kete rast do te ket cepat rrembullakta
+  nav.menu a:hover selektor css stilo lidhjet <a> qe ndodhen brenda nje <nav> me klasen menu kur kalon mausin mbi te 
+  transform: scale(1.1); rrit madhsin e butonit 
+  header>.sandy>(li>a)*3 shkurtim 

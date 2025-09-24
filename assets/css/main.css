@@ -1,0 +1,62 @@
+
+  .footer{
+    position: relative;  /*pozicioni footer  */
+    color: black;  /* ngjyra e footer e zez*/
+    font-size: 10px; /* percakton madhesine e tekstik */
+    bottom:0; /* e vendos ne fund te ekranit*/
+   text-align:center; /* rreshtimi i tekstit ne qender */
+   background-color:azure; /* ngjyra e back ground */
+   padding:10px 0; /*percakton hapsiren brenda nje elementi */
+   box-shadow:0 -1px 5px rgba(235, 13, 13, 0.1); /* perdoret per te vendosur hije rreth nje elementi */
+    width:100%; /* gjersin horizontale  */
+    }
+
+  
+/* css e sliderit */
+
+      :root {
+        --hero-min-h: 80vh; /* pse: lartësi e këndshme në desktop/mbi fold */
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #ffffff; background: #fff; }
+
+      /* Header (opsional) */
+      .topbar { position: sticky; top: 0; z-index: 20; background: rgba(15,17,21,.8); -webkit-backdrop-filter: saturate(140%) blur(6px); backdrop-filter: saturate(140%) blur(6px); border-bottom: 1px solid rgba(255,255,255,.06); }
+      .topbar .nav-link { color: #e7e9ee; }
+      .topbar .nav-link:hover, .topbar .nav-link:focus-visible { color: #fff; }
+
+      /* Hero / Carousel */
+      .hero.section { padding: 0; }
+      #hero-carousel { min-height: var(--hero-min-h); }
+      #hero-carousel .carousel-item { position: relative; min-height: var(--hero-min-h); }
+
+      /* Imazhi mbulon gjithë kornizën */
+      .carousel-image-container { position: absolute; inset: 0; overflow: hidden; }
+      .carousel-image { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.45); }
+      /* Overlay shtesë për lexueshmëri teksti */
+      .carousel-image-container::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 35%, rgba(0,0,0,.45) 100%); pointer-events: none; }
+
+      /* Teksti në qendër */
+      .carousel-container { position: relative; z-index: 2; min-height: var(--hero-min-h); display: grid; place-items: center; text-align: center; padding: clamp(16px, 4vw, 48px); }
+      .carousel-container h2 { color: #fff; font-weight: 800; letter-spacing: .2px; font-size: clamp(26px, 4vw, 56px); margin-bottom: 16px; }
+      .carousel-container p { color: #e6e8ee; max-width: min(72ch, 90vw); margin: 0 auto; font-size: clamp(14px, 1.6vw, 18px); }
+
+      /* Kontrollet me shigjeta */
+      #hero-carousel .carousel-control-prev, 
+      #hero-carousel .carousel-control-next { width: 56px; opacity: .9; }
+      #hero-carousel .carousel-control-prev:hover, 
+      #hero-carousel .carousel-control-next:hover { opacity: 1; }
+      #hero-carousel .carousel-control-prev .bi, 
+      #hero-carousel .carousel-control-next .bi { font-size: 28px; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+
+      /* Indikatorët (pikat) */
+      #hero-carousel .carousel-indicators { gap: 10px; margin-bottom: 22px; }
+      #hero-carousel .carousel-indicators button { width: 32px; height: 4px; border-radius: 999px; background-color: rgba(255,255,255,.5); }
+      #hero-carousel .carousel-indicators .active { background-color: #fff; }
+
+      /* Fade e lëmuar kur reduce-motion nuk kërkohet */
+      @media (prefers-reduced-motion: reduce) {
+        #hero-carousel { transition: none !important; }
+      }
+

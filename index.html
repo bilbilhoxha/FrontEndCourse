@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>H.B • Hero Carousel</title>
+    <meta name="description" content="Hero slider sipas shembullit: fade, autoplay, shigjeta, indikatorë, tekst i centruar." />
+     <link rel="stylesheet" href="assets/css/main.css"> <!---lidhje css menyra 2-->
+    <!-- Bootstrap 5 & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+
+  </head>
+  <body>
+    <!--test-->
+    <!-- NAV (opsionale, demonstrim)        -->
+    <nav class="topbar navbar navbar-expand-lg" aria-label="Kryemeny">
+      <div class="container-xxl">
+        <a class="navbar-brand text-white fw-bold" href="#">H.B</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Ndrysho navigimin">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main" style="min-height: 500px;">
+      <!-- Hero Section (ndiq shembullin) -->
+      <section id="hero" class="hero section dark-background">
+        <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="carousel-image-container">
+              <img class="carousel-image" src="https://t4.ftcdn.net/jpg/05/58/90/23/360_F_558902383_PDs3sth1i8Xe1GVih72wIwOY8xJbF7df.jpg" width="800" height="600" alt="Innovative Web Solutions Animation" loading="eager" />
+            </div>
+            <div class="carousel-container container-xxl">
+              <div>
+                <h2>Innovative Web Solutions for Modern Businesses</h2>
+                <p>At H.B, we transform businesses with cutting-edge web development and design, making your digital presence stronger and more effective.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 (shembulli yt ishte i komentuar; e lëmë të çaktivizuar) -->
+          <!--
+          <div class="carousel-item">
+            <div class="carousel-image-container">
+              <img class="carousel-image" src="assets/img/giphya.gif" alt="End-to-End Web Development Animation" />
+            </div>
+            <div class="carousel-container container-xxl">
+              <div>
+                <h2>End-to-End Web Development Services</h2>
+                <p>From back-end to front-end, we provide comprehensive development services that bring your ideas to life with efficiency and scalability.</p>
+              </div>
+            </div>
+          </div>
+          -->
+
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <div class="carousel-image-container">
+              <img class="carousel-image" src="https://images.unsplash.com/photo-1523875194681-bedd468c58bf?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hlc3N8ZW58MHx8MHx8fDA%3D " width="800" height="600" alt="Seamless UI/UX Animation" loading="lazy" />
+            </div>
+            <div class="carousel-container container-xxl">
+              <div>
+                <h2>Seamless UI/UX for Exceptional User Experiences</h2>
+                <p>Our design and development team creates user-centric interfaces that are visually stunning and easy to use, ensuring your customers stay engaged.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="carousel-item">
+            <div class="carousel-image-container">
+              <img class="carousel-image" src="https://png.pngtree.com/thumb_back/fh260/background/20220512/pngtree-a-male-chess-players-hand-executes-a-knights-move-by-moving-a-white-piece-on-the-chessboard-during-gameplay-photo-image_36615408.jpg" width="800" height="600" alt="High Performance Websites Animation" loading="lazy" />
+            </div>
+            <div class="carousel-container container-xxl">
+              <div>
+                <h2>High-Performance Websites & Apps</h2>
+                <p>Fast, secure and scalable solutions tailored to your business goals and users' needs.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev" aria-label="Slide prev">
+            <span class="bi bi-chevron-left" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next" aria-label="Slide next">
+            <span class="bi bi-chevron-right" aria-hidden="true"></span>
+          </button>
+
+          <!-- Indicators (do populohen nga JS) -->
+          <div class="carousel-indicators"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Popullo indikatorët sipas numrit të slajdeve
+      (function(){
+        const carousel = document.getElementById('hero-carousel');
+        if(!carousel) return;
+        const indicators = carousel.querySelector('.carousel-indicators');
+        const items = carousel.querySelectorAll('.carousel-item');
+        if(!indicators || !items.length) return;
+
+        indicators.innerHTML = '';
+        items.forEach((_, i) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('data-bs-target', '#hero-carousel');
+          b.setAttribute('data-bs-slide-to', String(i));
+          b.setAttribute('aria-label', `Slide ${i+1}`);
+          if(i === 0) b.classList.add('active');
+          indicators.appendChild(b);
+        });
+      })();
+    </script>
+  </body>
+</html>
+
+
+<!--funksionet start-->
+
+
+<!--Testimonials--->
+
+<!-- Testimonials -->
+<section class="tst container" aria-label="Testimonials">
+  <h2 class="tst__title">Çfarë thonë klientët</h2>
+
+  <div class="tst__grid">
+    <!-- Card 1 -->
+    <figure class="tst__card">
+      <img class="tst__avatar" src="https://i.pravatar.cc/120?img=12" alt="Portreti i Klientit 1">
+      <figcaption class="tst__meta">
+        <span class="tst__name">Arben Kola</span>
+        <span class="tst__role">CEO, Kola Group</span>
+        <span class="tst__stars" aria-label="5 yje">
+          <!-- 5 yje SVG -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+        </span>
+      </figcaption>
+      <blockquote class="tst__quote">
+        “Shërbim i shpejtë dhe i saktë. Implementimi doli fiks si në plan.”
+      </blockquote>
+    </figure>
+
+    <!-- Card 2 -->
+    <figure class="tst__card">
+      <img class="tst__avatar" src="https://i.pravatar.cc/120?img=32" alt="Portreti i Klientit 2">
+      <figcaption class="tst__meta">
+        <span class="tst__name">Erisa Meta</span>
+        <span class="tst__role">Product Manager, Nova</span>
+        <span class="tst__stars" aria-label="4 yje e gjysmë">
+          <!-- 4 yje të plota + 1 e mbushur me gradient për “half” (opsionale) -->
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg class="tst__star--half" viewBox="0 0 24 24">
+            <defs>
+              <linearGradient id="half">
+                <stop offset="50%" />
+                <stop offset="50%" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#half)" d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/>
+            <path opacity=".25" d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/>
+          </svg>
+        </span>
+      </figcaption>
+      <blockquote class="tst__quote">
+        “Komunikim shumë i mirë dhe zbatim me cilësi. Do t’i zgjedh përsëri.”
+      </blockquote>
+    </figure>
+
+    <!-- Card 3 -->
+    <figure class="tst__card">
+      <img class="tst__avatar" src="https://i.pravatar.cc/120?img=7" alt="Portreti i Klientit 3">
+      <figcaption class="tst__meta">
+        <span class="tst__name">Blendi Dervishi</span>
+        <span class="tst__role">Founder, Atlas Tech</span>
+        <span class="tst__stars" aria-label="5 yje">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+        </span>
+      </figcaption>
+      <blockquote class="tst__quote">
+        “Performancë e shkëlqyer dhe dokumentim i qartë. E rekomandoj!”
+      </blockquote>
+    </figure>
+  </div>
+</section>
+
+<!--css-->
+<style>
+/* Kuti dhe titulli */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+.tst__title {
+  margin: 0 0 18px;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #0f172a;
+}
+
+/* Rrjeti */
+.tst__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .tst__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .tst__grid { grid-template-columns: 1fr; }
+}
+
+/* Karta */
+.tst__card {
+  background: #ffffff;
+  border: 1px solid rgba(2, 6, 23, 0.06);
+  border-radius: 14px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-areas:
+    "avatar meta"
+    "quote  quote";
+  gap: 12px 14px;
+  box-shadow: 0 10px 24px rgba(2,6,23,.06);
+}
+.tst__card:hover {
+  transform: translateY(-2px);
+  transition: transform .25s ease;
+}
+
+/* Avatar */
+.tst__avatar {
+  grid-area: avatar;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+}
+
+/* Meta */
+.tst__meta {
+  grid-area: meta;
+  display: flex;
+  align-items: center;
+  gap: 10px 14px;
+  flex-wrap: wrap;
+}
+.tst__name {
+  font-weight: 700;
+  color: #0f172a;
+}
+.tst__role {
+  font-size: 13px;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+/* Yjet (SVG inline) */
+.tst__stars {
+  display: inline-flex;
+  gap: 2px;
+  margin-left: auto;
+}
+.tst__stars svg {
+  width: 16px; height: 16px;
+  fill: #fbbf24; /* amber-400 */
+  display: block;
+}
+.tst__star--half stop:first-child { stop-color: #fbbf24; }
+.tst__star--half stop:last-child  { stop-color: #fbbf24; }
+
+/* Citat */
+.tst__quote {
+  grid-area: quote;
+  margin: 4px 0 0;
+  color: #334155;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 18px;
+}
+.tst__quote:before {
+  content: "“";
+  position: absolute;
+  left: -2px; top: -6px;
+  font-size: 28px; line-height: 1;
+  color: #94a3b8;
+}
+</style>
+<!--css-->
+<!--testimonials--->
+
+
+
+
+
+<footer class="footer"> 
+  <p> email:gjonpalajdenis@gmail.com </p>
+   <p>tel:0683426669</p>
+   <a href="https://hbsolutions.al/" >H.B</a>
+</footer>
+
+</body>
+</html>
+
